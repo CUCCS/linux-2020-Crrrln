@@ -32,7 +32,7 @@
 
 观察到第二块网卡已经启动成功
 
-![启动第二块网卡后](/images/启动后的网卡.PNG)
+![启动第二块网卡后](./images/启动后的网卡.PNG)
 获取到ip地址为：192.168.56.101
 
 **3.在Ubuntu中安装ssh服务**
@@ -51,7 +51,7 @@
 
 如图，文件已成功传递
 
-![镜像文件传递后](/images/镜像文件传递后.PNG)
+![镜像文件传递后](./images/镜像文件传递后.PNG)
 
 **6. 在当前用户目录下创建一个用于挂载iso镜像文件的目录**
 
@@ -61,7 +61,7 @@
 
 >sudo mount -o loop ubuntu-16.04.1-server-amd64.iso loopdir
 
-![iso镜像已挂载](/images/iso镜像已挂载.PNG)
+![iso镜像已挂载](./images/iso镜像已挂载.PNG)
 
 
 **8. 创建一个工作目录用于克隆光盘内容**
@@ -72,7 +72,7 @@
 
 >rsync -av loopdir/ cd
 
-![同步光盘到目标工作目录](/images/同步光盘到目标工作目录.PNG)
+![同步光盘到目标工作目录](./images/同步光盘到目标工作目录.PNG)
 
 **10.卸载iso镜像**
 
@@ -96,7 +96,7 @@
 先按Esc，再输入:wq!  
 增加结果如下：
 
-![增加一个新菜单项入口](/images/增加一个新菜单项入口.PNG)
+![增加一个新菜单项入口](./images/增加一个新菜单项入口.PNG)
 
 **12.自行修改编辑定制Ubuntu官方提供的示例preseed.cfg**
 
@@ -118,20 +118,21 @@
 
 查看发现移动成功
 
-![把seed文件移到了指定目录下](/images/把seed文件移到了指定目录下.PNG)
+![把seed文件移到了指定目录下](./images/把seed文件移到了指定目录下.PNG)
 
 **14.更改isolinux/isolinux.cfg
 增加timeout 10**
 
 >sudo vim isolinux/isolinux.cfg
 
-![增加timeout10](/images/增加timeout10.PNG)
+![增加timeout10](./images/增加timeout10.PNG)
+
 **15.重新生成md6sum.txt**
  
 >sudo -s  
 find . -type f -print0 | xargs -0 md5sum > md5sum.txt
 
-![重新生成md5sum.txt](/images/重新生成md5sum.txt.PNG)
+![重新生成md5sum.txt](./images/重新生成md5sum.txt.PNG)
 
 **16.封闭改动后的目录到.iso**
 
@@ -150,7 +151,7 @@ mkisofs -r -V "Custom Ubuntu Install CD" \
 
 查看建好了的iso镜像文件
 
-![建好了iso镜像](/images/建好了iso镜像.PNG)
+![建好了iso镜像](./images/建好了iso镜像.PNG)
 
 **15.导出.iso镜像文件**
 
@@ -158,7 +159,7 @@ mkisofs -r -V "Custom Ubuntu Install CD" \
 >lcd D:\  
 get custom.iso
 
-![导出custom.iso](/images/导出custom.iso.PNG)  
+![导出custom.iso](./images/导出custom.iso.PNG)  
 
 ### 实验结果
 装载custom.iso后，就可以静静等着它自动安装了
@@ -173,7 +174,10 @@ get custom.iso
 - 第一次制作custom.iso时，修改了静态网络的ipaddress成192.168.56.101，gateway和nameservers都修改成192.168.56.1，以及用户名和密码，但是在configure the network配置IP地址时，需要手动输（第一次的custom.iso配置失败）目前还不知道应该怎么修改静态网络.....
    
    
+### 参考文献
+[老师的无人值守安装ISO镜像课件](https://c4pr1c3.github.io/LinuxSysAdmin/chap0x01.exp.md.html#/iso)
 
+[2015-linux-public-tyushua1](https://github.com/CUCCS/2015-linux-public-tyushua1/commit/6e084fdfdb5acd4dc3dff6abc292b2f0173ae4fa?short_path=201e948)
 
   
 
