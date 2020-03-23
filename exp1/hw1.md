@@ -154,7 +154,7 @@ mkisofs -r -V "Custom Ubuntu Install CD" \
 
 ![建好了iso镜像](./images/建好了iso镜像.PNG)
 
-**15.导出.iso镜像文件**
+**17.导出.iso镜像文件**
 
 无法将iso镜像文件到C盘，更改导出路径到D盘
 >lcd D:\  
