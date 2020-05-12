@@ -5,7 +5,7 @@
 - 安装过程禁止自动联网更新软件包
 
 ### 软件环境
-- Ubuntu 18.04 Server 64bit
+- Ubuntu 18.04.4 Server 64bit
 - Virtualbox
 - putty
   
@@ -38,7 +38,10 @@
 
 **3.在Ubuntu中安装ssh服务**
 
-命令：
+更新源
+>sudo apt-get update   
+
+安装ssh服务
 >sudo apt-get install ssh openssh-server
 
 **4，建立putty连接** 
@@ -128,17 +131,20 @@
 
 ![增加timeout10](./images/增加timeout10.PNG)
 
-**15.重新生成md6sum.txt**
+**15.重新生成md5sum.txt**
  
 >sudo -s  
 find . -type f -print0 | xargs -0 md5sum > md5sum.txt
 
 ![重新生成md5sum.txt](./images/重新生成md5sum.txt.PNG)
 
-**16.封闭改动后的目录到.iso**
+**16.打包改动后的目录为.iso文件**
 
-
->IMAGE=custom.iso
+```
+#建立shell脚本
+sudo vim shell
+#添加以下内容到脚本中
+IMAGE=custom.iso
 BUILD=/home/gaochangchang/cd/
 mkisofs -r -V "Custom Ubuntu Install CD" \
             -cache-inodes \
@@ -146,7 +152,9 @@ mkisofs -r -V "Custom Ubuntu Install CD" \
             -c isolinux/boot.cat -no-emul-boot \
             -boot-load-size 4 -boot-info-table \
             -o $IMAGE $BUILD
-
+#执行shell脚本
+sudo bash shell 
+```
 出现错误：提示安装genisoimage
 >sudo apt-get install genisoimage
 
@@ -171,10 +179,24 @@ get custom.iso
 - 很多命令没有权限执行，如挂载iso镜像文件到该目录的命令，前面加上**sudo**  
   
 - 在创建克隆光盘文件时忘记退出loopdir的文件夹，于是删除重新执行 `rm -r cd`命令
+
   
 - 第一次制作custom.iso时，修改了静态网络的ipaddress成192.168.56.101，gateway和nameservers都修改成192.168.56.1，以及用户名和密码，但是在configure the network配置IP地址时，需要手动输（第一次的custom.iso配置失败）目前还不知道应该怎么修改静态网络.....
-   
-   
+   - 解决方法如下：
+      - 禁用网络自动配置：将第44行中`#d-i netcfg/disable_autoconfig boolean true`改为`d-i netcfg/disable_autoconfig boolean false`
+      - 静态网络的配置：
+        ```
+        #修改IPV4
+        #去掉原文前面的#号并修改相应的数值
+        d-i netcfg/get_ipaddress string 192.168.56.101
+        d-i netcfg/get_netmask string 255.255.255.0
+        d-i netcfg/get_gateway string 192.168.56.1
+        d-i netcfg/get_nameservers string 192.168.56.1
+     - 为确保上述修改有效，且恰好留着在导入.seed文件前的备份，故实战一下，发现静态网络问题确实解决了（感谢师哥），但与此同时需要做一些其他的修改才能保证实现无人值守，相关修改已上传 ~~简易版老师的.seed文件 很多地方没有考虑周全,用了9分多钟~~
+   - 解决以上问题后，一切顺利~
+  ![OK](./images/Ok.PNG)  
+
+        
 ### 参考文献
 [老师的无人值守安装ISO镜像课件](https://c4pr1c3.github.io/LinuxSysAdmin/chap0x01.exp.md.html#/iso)
 
