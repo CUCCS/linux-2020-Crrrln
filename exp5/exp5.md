@@ -1,4 +1,4 @@
-## 实验五：Web服务器
+* ## 实验五：Web服务器
 
 ### 实验环境
 - Ubuntu 18.04.4 Server 64bit
@@ -165,7 +165,7 @@ root /var/www/html/wp.sec.cuc.edu.cn;
 ```
 添加hosts文件添加`192.168.56.101 	wp.sec.cuc.edu.cn`，登录`wp.sec.cuc.edu.cn`即可正常访问。
 
-![verynginx](./imgs/WP网站终于登上了.PNG)
+![verynginx](./imgs/wp网站终于登上了.PNG)
 
 登录后通过配置个人账户信息
 
