@@ -356,7 +356,7 @@ sudo systemctl restart nginx
 
         
 ### 参考文献
-[linux-2019-jackcily]([linux-2019-jackcily](https://github.com/CUCCS/linux-2019-jackcily/blob/job5/job5/实验5.md))
+[linux-2019-jackcily](https://github.com/CUCCS/linux-2019-jackcily/blob/job5/job5/实验5.md)
 
 [linux-2019-DcmTruman](https://github.com/CUCCS/linux-2019-DcmTruman/blob/0x05/0x05/实验报告.md)
 
