@@ -24,6 +24,7 @@
     ```
 ### 实验步骤
 **1.配置工作主机到目标主机的远程SSH免密登录**
+
 目标主机ssh配置
 ```
 #开启ssh服务
@@ -71,6 +72,7 @@ sudo systemctl restart ssh
 ![免密登录](./imgs/免密登录.PNG)
 
 **2.FTP**
+
 相关服务器配置
   - 选择服务器vsftpd
   - 脚本文件[vsftpd.sh](./相关文件/vsftpd.sh)
@@ -315,6 +317,9 @@ sudo smbclient -L 192.168.243.3 -U Dell
 ### 参考资料
 
 [how-to-install-and-configure-samba-on-ubuntu-18-04](https://www.myfreax.com/how-to-install-and-configure-samba-on-ubuntu-18-04/)
+
 [更改镜像源](https://blog.csdn.net/zhangjiahao14/article/details/80554616)
+
 [linux-2020-cuc-Lynn](https://github.com/CUCCS/linux-2020-cuc-Lynn/blob/chap0x06/chap0x06实验报告.md)
+
 [linux-2019-luyj](https://github.com/CUCCS/linux-2019-luyj/blob/Linux_exp0x06/Linux_exp0x06/Linux_exp0x06.md)
