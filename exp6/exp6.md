@@ -121,7 +121,7 @@ ssh -i .ssh/key root@192.168.56.102 'bash workspace/vsftpd.sh'
 
 ![不能访问](./imgs/102NFS.PNG)
 
-![不能访问](./imgs/102NFS.PNG)
+![不能访问](./imgs/101NFS.PNG)
 
 **两个共享文件目录对应只读和读写访问权限**
 
