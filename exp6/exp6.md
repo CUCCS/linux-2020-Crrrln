@@ -119,9 +119,9 @@ ssh -i .ssh/key root@192.168.56.102 'bash workspace/vsftpd.sh'
 
 创建的两个目录分别为:只读/nfs/gen_r和读写/nfs/gen_rw 
 
-![不能访问](./imgs/102NFS.PNG)
+![不能访问](./imgs/102nfs.PNG)
 
-![不能访问](./imgs/101NFS.PNG)
+![不能访问](./imgs/101nfs.PNG)
 
 **两个共享文件目录对应只读和读写访问权限**
 
@@ -133,6 +133,7 @@ client端
 ![client端](./imgs/client端.PNG)
 server端
 ![server端](./imgs/server端.PNG)
+
 [根据资料](https://www.digitalocean.com/community/tutorials/how-to-set-up-an-nfs-mount-on-ubuntu-18-04)
 
 ```
