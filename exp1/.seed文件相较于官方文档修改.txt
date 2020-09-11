@@ -1,0 +1,32 @@
+#跳过语言支持询问
+d-i localechooser/supported-locales multiselect en_US.UTF-8, zh_CN.UTF-8
+
+#修改静态网络配置
+d-i netcfg/disable_autoconfig boolean true
+
+# IPv4 example
+d-i netcfg/get_ipaddress string 192.168.138.42
+d-i netcfg/get_netmask string 255.255.255.0
+d-i netcfg/get_gateway string 192.168.138.1
+d-i netcfg/get_nameservers string 192.168.138.1
+d-i netcfg/confirm_static boolean true
+
+#设置用户名和密码（刚开始用户名首字母大写，结果不符合规范，/(ㄒoㄒ)/~~）
+# To create a normal user account.
+d-i passwd/user-fullname string gcc
+d-i passwd/username string gcc
+# Normal user's password, either in clear text
+d-i passwd/user-password password Gaochangchang
+d-i passwd/user-password-again password Gaochangchang
+
+#设置最大的空闲空间进行自动分区
+d-i partman-auto/init_automatically_partition select biggest_free
+
+#设置lvm分区
+d-i partman-auto-lvm/guided_size string max
+
+#自动安装更新
+tasksel tasksel/first multiselect server
+d-i pkgsel/include string openssh-server
+d-i pkgsel/upgrade select none
+d-i pkgsel/update-policy select unattended-upgrades
