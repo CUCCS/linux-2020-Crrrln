@@ -1,0 +1,44 @@
+language: bash
+
+
+before_install:
+
+        - sudo apt-get update && sudo apt-get install -y shellcheck
+        - sudo apt-get install imagemagick
+        - ls -l
+
+script:
+        #任务一
+        shellcheck task_code/task1.sh
+
+        -bash task_code/task1.sh share/img -c 20
+        -bash task_code/task1.sh share/img -r 100
+        -bash task_code/task1.sh share/img -w gcc
+        -bash task_code/task1.sh share/img -p rename_
+         -bash task_code/task1.sh share/img -s _rename
+        -bash task_code/task1.sh share/img -t
+
+
+        #任务二
+        shellcheck task_code/task2.sh
+
+        bash task2.sh share/worldcupplayerinfo.tsv -r
+        bash task2.sh share/worldcupplayerinfo.tsv -p
+        bash task2.sh share/worldcupplayerinfo.tsv -n
+        bash task2.sh share/worldcupplayerinfo.tsv -m
+        bash task2.sh share/worldcupplayerinfo.tsv -h
+
+
+        #任务三
+        shellchek task_code/task3.sh
+
+        bash task3.sh share/web_log.tsv -H
+        bash task3.sh share/web_log.tsv -i
+        bash task3.sh share/web_log.tsv -u
+        bash task3.sh share/web_log.tsv -s
+        bash task3.sh share/web_log.tsv -c
+        bash task3.sh share/web_log.tsv -U /pub/winvn/release.txt
+
+ notifications:
+        email:
+          on_success: never
